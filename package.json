@@ -1,0 +1,26 @@
+{
+  "name": "lodgify",
+  "version": "1.0.0",
+  "description": "E-Commerce Website",
+  "homepage": "https://github.com/deepaksoni47/Lodgify#readme",
+  "bugs": {
+    "url": "https://github.com/deepaksoni47/Lodgify/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/deepaksoni47/Lodgify.git"
+  },
+  "license": "MIT",
+  "author": "Deepak Soni",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "lodgify": "file:",
+    "mongoose": "^8.10.1"
+  }
+}
