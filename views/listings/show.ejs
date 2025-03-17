@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate') %> <!-- This line tells EJS to use the boilerplate layout file -->
+<div class="row mt-3">
+    <div class="col-8 offset-3">
+        <h3><%=listing.title%></h3>
+    </div>
+        <div class="card col-6 offset-3 show-card">
+            <img src="<%= listing.image.url%>" alt="listing-image" class="card-img-top show-img">
+            <div class="card-body">
+                <p class="card-text mt-3">
+                    
+                    <%= listing.description %><br>
+                    Price: &#8377;<%= listing.price.toLocaleString("en-IN") %> <br>
+                    Location: <%= listing.location %> <br>
+                    Country: <%= listing.country %> <br>
+                </p>
+            </div>
+            
+        </div>
+        <div class="btns mb-3">
+        <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark edit-btn col-1 offset-3">Edit</a>
+        <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-dark offset-5">Delete</button>
+        </form>
+        </div>
+    <!-- <a href="/listings">Back to All Listings</a> -->
+    
+    <hr> 
+    <div class="col-6 offset-3 mt-3">
+        <h4>Leave a Review</h4>
+        <form action="/listings/<%= listing._id %>/reviews" class="needs-validation" method="POST" novalidate>
+            <div class="form-group mb-3">
+                <label for="rating" class="form-label">Rating</label>
+                <input type="range" min="1" max="5" id="rating" class="form-range" name="review[rating]" required>
+                <div class="invalid-feedback">Please enter the rating</div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="content" class="form-label">Review</label>
+                <textarea cols="30" rows="5" name="review[comment]" class="form-control" id="comment" placeholder="Enter a review" required></textarea>
+                <div class="invalid-feedback">Please  Enter a Review</div>
+            </div>
+            <button type="submit" class="btn btn-dark">Submit Review</button>
+
+     </div>
+</div>

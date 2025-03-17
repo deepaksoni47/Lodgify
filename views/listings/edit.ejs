@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate') %> <!-- This line tells EJS to use the boilerplate layout file -->
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <h3>Edit Listing</h3>
+        <form action="/listings/<%= listing._id %>?_method=PUT" method="post" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<%= listing.title %>" required>
+                <div class="invalid-feedback">Please Enter a Title</div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" class="form-control" name="description" placeholder="description" required><%= listing.description %></textarea>
+                <div class="invalid-feedback">Please Enter a Description</div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image URL:</label>
+                <input name="image" class="form-control" placeholder="Image URL" type="text" value="<%= listing.image.url %>" required>
+                <div class="invalid-feedback">Please Enter an Image URL</div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-4">
+                    <label for="price" class="form-label">Price:</label>
+                    <input type="number" class="form-control" value="<%= listing.price %>" id="price" name="price" placeholder="price" required>
+                    <div class="invalid-feedback">Please Enter a Price</div>
+                </div>
+                <div class="mb-3 col-md-8">
+                    <label for="country" class="form-label">Country:</label>
+                    <input type="text" class="form-control" value="<%= listing.country %>" id="country" name="country" placeholder="country" required>
+                    <div class="invalid-feedback">Please Enter a Country</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location:</label>
+                <input type="text" class="form-control" value="<%= listing.location %>" placeholder="location" id="location" name="location" required>
+                <div class="invalid-feedback">Please Enter a Location</div>
+            </div>
+            <button class="btn btn-dark edit-btn mt-3" type="submit">Edit Listing</button>
+        </form>
+    </div>
+</div>
