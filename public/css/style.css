@@ -56,7 +56,7 @@ body{
     justify-content: center;
     align-items: space-evenly;
 }
-.card{
+.listing-card{
     border: none !important;
     margin-bottom: 2rem;
 }
@@ -93,7 +93,7 @@ body{
 }
 /*show page*/
 .show-img{
-    height: 30vh; 
+    height: 40vh; 
 }
 .btns {
     display: flex;
