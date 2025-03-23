@@ -6,7 +6,7 @@ const ExpressError = require("../utils/ExpressError.js");
 const {listingSchema} = require("../schema.js");
 
 const validateListing = (req,res,next) => {
-    let {error} = listingSchema.validate(req.body.listing);
+    let {error} = listingSchema.validate(req.body);
     if(error){
         let errMsg = error.details.map(el => el.message).join(",");
         throw new ExpressError(400, errMsg);
@@ -38,6 +38,7 @@ router.post("/", validateListing ,wrapAsync( async (req,res,next) => {
     const newListing = new Listing(req.body);
     console.log(newListing);
     await newListing.save();
+    req.flash("success", "Successfully made a new listing!");
     res.redirect(`/listings/${newListing._id}`);
 }));
 
