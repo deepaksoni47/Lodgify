@@ -35,7 +35,28 @@ async function main() {
   
     // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
   }
- 
+  const store = MongoDBStore.create({
+    mongoUrl: dbUrl,
+    crypto:{
+        secret: process.env.SECRET,
+    },
+    touchAfter: 24*60*60,
+});
+store.on("error", function(e){
+    console.log("session store error",e);
+});
+
+const sessionOptions = {
+    store: store,
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000*60*60*24*7,
+        maxAge: 1000*60*60*24*7
+    }
+};
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -59,28 +80,7 @@ app.use(cookieParser());
 // });
 
 
-const store = MongoDBStore.create({
-    mongoUrl: dbUrl,
-    crypto:{
-        secret: process.env.SECRET,
-    },
-    touchAfter: 24*60*60,
-});
-store.on("error", function(e){
-    console.log("session store error",e);
-});
 
-const sessionOptions = {
-    store: store,
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        httpOnly: true,
-        expires: Date.now() + 1000*60*60*24*7,
-        maxAge: 1000*60*60*24*7
-    }
-};
 
 app.use((req,res,next) => {
     res.locals.success = req.flash("success");
