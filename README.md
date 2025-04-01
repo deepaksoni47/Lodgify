@@ -1,6 +1,6 @@
 # 🏡 Lodgify - Travel & Listings Platform
 
-![Lodgify Banner](https://via.placeholder.com/1200x400?text=Lodgify)
+![Lodgify Banner](https://drive.google.com/file/d/1AsRgYxWeFq-RtpuaMihx4uypalhdGzxL/view?usp=sharing)
 
 > **Discover, List, and Explore!** Lodgify is a **travel and listings website** where users can view property details, add their own listings, and leave reviews. Built with an intuitive UI and a robust backend, Lodgify ensures a seamless experience for travelers and property owners alike. 🌍✨
 
