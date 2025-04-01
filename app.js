@@ -75,9 +75,9 @@ app.use(methodOverride("_method"));
 app.engine("ejs",ejsMate);
 app.use(cookieParser());
 
-// app.get("/",(req,res) => {
-//     res.send("root is working");
-// });
+app.get("/",(req,res) => {
+    res.redirect("/listings");
+});
 
 
 
