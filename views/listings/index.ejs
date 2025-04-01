@@ -1,9 +1,46 @@
 <% layout('layouts/boilerplate') %>
 <body>
-    <h3>All Listings</h3>
+    <!-- <h3>All Listings</h3> -->
     <!-- <form action="/listings/new" method="GET">
         <button>Create New Listing</button>
     </form> -->
+    <div class="filters-container">
+      <button class="scroll-btn left"><i class="fa-solid fa-chevron-left"></i></button>
+    
+      <div id="filters">
+        <div class="filter"><div><i class="fa-solid fa-fire"></i></div><p>Trending</p></div>
+        <div class="filter"><div><i class="fa-solid fa-bed"></i></div><p>Rooms</p></div>
+        <div class="filter"><div><i class="fa-solid fa-city"></i></div><p>Iconic Cities</p></div>
+        <div class="filter"><div><i class="fa-solid fa-mountain"></i></div><p>Mountains</p></div>
+        <div class="filter"><div><i class="fa-solid fa-chess-rook"></i></div><p>Castles</p></div>
+        <div class="filter"><div><i class="fa-solid fa-person-swimming"></i></div><p>Amazing Pools</p></div>
+        <div class="filter"><div><i class="fa-solid fa-campground"></i></div><p>Camping</p></div>
+        <div class="filter"><div><i class="fa-solid fa-cow"></i></div><p>Farms</p></div>
+        <div class="filter"><div><i class="fa-solid fa-snowflake"></i></div><p>Arctic</p></div>
+        <div class="filter"><div><i class="fa-solid fa-umbrella-beach"></i></div><p>Beach</p></div>
+        <div class="filter"><div><i class="fa-solid fa-person-skiing-nordic"></i></div><p>Skiing</p></div>
+        <div class="filter"><div><i class="fa-solid fa-tree"></i></div><p>Nature</p></div>
+        <div class="filter"><div><i class="fa-solid fa-house"></i></div><p>Villas</p></div>
+        <div class="filter"><div><i class="fa-solid fa-water"></i></div><p>Lakefront</p></div>
+        <div class="filter"><div><i class="fa-solid fa-mug-hot"></i></div><p>Cabins</p></div>
+        <div class="filter"><div><i class="fa-solid fa-plane"></i></div><p>Airports</p></div>
+        <div class="filter"><div><i class="fa-solid fa-hotel"></i></div><p>Hotels</p></div>
+        <div class="filter"><div><i class="fa-solid fa-bicycle"></i></div><p>Bike Trails</p></div>
+        <div class="filter"><div><i class="fa-solid fa-spa"></i></div><p>Wellness</p></div>
+      </div>
+    
+      <button class="scroll-btn right"><i class="fa-solid fa-chevron-right"></i></button>
+    
+      <div class="tax-toggle">
+        <div class="form-check form-check-reverse form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Display taxes</label>
+        </div>
+      </div>
+    </div>
+    
+    
+    
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
         <% for(let listing of allListings) { %>
             <a class="listing-link" href="/listings/<%=listing._id%>">
@@ -13,12 +50,47 @@
                     <div class="card-body">
                       <p class="card-text">
                         <b><%= listing.title %></b> <br>
-                        &#8377;<%= listing.price.toLocaleString("en-IN") %> / night <br>
+                        &#8377;<%= listing.price.toLocaleString("en-IN") %> / night <i class="tax-info">&nbsp; &nbsp;+18% GST</i><br>
                       </p>
                     </div>
                   </div>
             </a>
         <% } %>
     </div>
-    
+
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click",() =>{
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for(info of taxInfo){
+      if(info.style.display != "inline"){
+        info.style.display = "inline";
+      }else{
+        info.style.display = "none";
+      }
+
+    }
+
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const filters = document.getElementById("filters");
+    const leftBtn = document.querySelector(".scroll-btn.left");
+    const rightBtn = document.querySelector(".scroll-btn.right");
+
+    if (filters && leftBtn && rightBtn) {
+        leftBtn.addEventListener("click", () => {
+            filters.scrollBy({ left: -200, behavior: "smooth" });
+        });
+
+        rightBtn.addEventListener("click", () => {
+            filters.scrollBy({ left: 200, behavior: "smooth" });
+        });
+    } else {
+        console.error("One or more elements not found!");
+    }
+});
+
+
+</script>
 </body>

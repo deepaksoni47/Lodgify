@@ -33,10 +33,26 @@
             <hr> 
             <h4>Leave a Review</h4>
             <form action="/listings/<%= listing._id %>/reviews" class="needs-validation" method="POST" novalidate>
-                <div class="form-group mb-3">
+                <!-- <div class="form-group mb-3">
                     <label for="rating" class="form-label">Rating</label>
                     <input type="range" min="1" max="5" id="rating" class="form-range" name="review[rating]" required>
                     <div class="invalid-feedback">Please enter the rating</div>
+                </div> -->
+                <div class="form-group mb-3">
+                    <label for="rating" class="form-label">Rating</label>
+                    <fieldset class="starability-slot">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
                 </div>
                 <div class="form-group mb-3">
                     <label for="comment" class="form-label">Review</label>
@@ -47,13 +63,16 @@
             </form>
         <% } %>
         <hr>
+        <% if(listing.reviews.length>0) {%>
         <h4>Reviews</h4>
         <div class="row row-cols-lg-2 row-cols-md-1">
             <% listing.reviews.forEach(function(review){ %>
                 <div class="card mb-3">
                     <div class="card-body">
                         <h5 class="card-title">@<%= review.author.username %></h5>
-                        <p class="card-text">Rating: <%= review.rating %></p>
+                        <p class="starability-result" data-rating="<%= review.rating %>">
+                            Rated: <%= review.rating %> stars
+                          </p>
                         <p class="card-text">Review: <%= review.comment %></p>
                     </div>
                     <% if(currentUser && currentUser._id.equals(review.author._id)) { %>
@@ -64,6 +83,26 @@
                 </div>
             <% }) %>
         </div>
+        <% } %>
+    </div>
+    <div class="col-8 offset-2 mb-3">
+        <h4>Where You'll be</h4>
+        <div id="map">
+
+        </div>
     </div>
 
 </div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin="">
+</script>
+<script>
+    var listingData = {
+            lat: <%= listing.lat || 0 %>,
+            lng: <%= listing.lng || 0 %>,
+            title: "<%= listing.title %>",
+            location: "<%= listing.location %>"
+    };
+</script>
+<script src="/js/map.js"></script>

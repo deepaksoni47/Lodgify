@@ -12,10 +12,11 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 };
 
+
 module.exports.saveReturnTo = (req, res, next) => {
     if (req.session.returnTo) {
         res.locals.returnTo = req.session.returnTo; // Make it available in the response locals // Clear it after saving
-        delete req.session.returnTo;
+
     }
     next();
 };
