@@ -50,41 +50,41 @@ Check it out here: [https://lodgify-e4uq.onrender.com](https://lodgify-e4uq.onre
 
 ## 📂 Project Structure
 
-\`\`\`
+```
 Lodgify/
 │-- backend/  # Node.js Express API
 │-- frontend/ # HTML, CSS, JavaScript UI
 │-- docs/     # API Documentation
 │-- tests/    # Unit and integration tests
 │-- README.md # Project documentation
-\`\`\`
+```
 
 ## 🚀 Getting Started
 
 1. **Clone the repository**:
-   \`\`\`sh
+   ```sh
    git clone https://github.com/deepaksoni47/Lodgify.git
    cd Lodgify
-   \`\`\`
+   ```
 
 2. **Install dependencies**:
-   \`\`\`sh
+   ```sh
    npm install
-   \`\`\`
+   ```
 
 3. **Start the development server**:
-   \`\`\`sh
+   ```sh
    node app.js
-   \`\`\`
+   ```
 
 ## 🤝 Contributing
 
 We welcome contributions! If you have suggestions or improvements, please follow these steps:
 
 1. Fork the repository.  
-2. Create a new branch (\`git checkout -b feature/YourFeature\`).  
-3. Make your changes and commit them (\`git commit -m 'Add some feature'\`).  
-4. Push to the branch (\`git push origin feature/YourFeature\`).  
+2. Create a new branch (`git checkout -b feature/YourFeature`).  
+3. Make your changes and commit them (`git commit -m 'Add some feature'`).  
+4. Push to the branch (`git push origin feature/YourFeature`).  
 5. Open a pull request.  
 6. Ensure your code adheres to the project's coding standards and passes all tests.  
 7. Add relevant documentation for any new features or changes.  
