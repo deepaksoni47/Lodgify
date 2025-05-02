@@ -48,15 +48,29 @@ Check it out here: [https://lodgify-e4uq.onrender.com](https://lodgify-e4uq.onre
 - Leaflet API (for maps)  
 - JSON Web Tokens (JWT) for API authentication  
 
-## 📂 Project Structure
+## 📁 Project Structure
+
+The project follows the MVC pattern with organized folders for scalability:
 
 ```
 Lodgify/
-│-- backend/  # Node.js Express API
-│-- frontend/ # HTML, CSS, JavaScript UI
-│-- docs/     # API Documentation
-│-- tests/    # Unit and integration tests
-│-- README.md # Project documentation
+├── .vscode/           # VS Code specific settings
+├── controllers/       # Controller logic for routing
+├── init/              # Initialization scripts/configs
+├── models/            # Mongoose models (schemas)
+├── public/            # Static assets (images, CSS, JS)
+├── routes/            # Express route definitions
+├── utils/             # Utility/helper functions
+├── views/             # EJS or other view templates
+├── .gitignore         # Git ignored files list
+├── LICENSE            # MIT License file
+├── README.md          # Project documentation
+├── app.js             # Entry point of the app
+├── cloudconfig.js     # Cloud service configurations
+├── middleware.js      # Custom middleware functions
+├── package-lock.json  # Exact dependency tree
+├── package.json       # Project metadata and scripts
+├── schema.js          # Additional schema definitions
 ```
 
 ## 🚀 Getting Started
